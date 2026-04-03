@@ -79,9 +79,9 @@
       setInterval( function() {
         所持金 = Math.floor(所持金);
         木材の数 = Math.floor(木材の数);
-        木材ロジック = 所持金 - Math.pow(木材伐採レベル, 1.5);
+        木材ロジック = 所持金 - Math.pow(木材伐採レベル+1, 1.4);
         
-        if (所持金 <= Math.pow(木材伐採レベル, 1.4)+1) {
+        if (!(0 < 所持金 - Math.pow(木材伐採レベル+1, 1.4)+1)) {
           document.querySelector("button[data-id='伐採レベルを1上げる']").style.backgroundColor = "#ff0000";
           document.querySelector("button[data-id='伐採レベルを1上げる']").style.borderColor = "#d00";
         } else {
@@ -178,9 +178,12 @@
         
         if (所持金 < 0) {
           gameover = true;
+          伐採レベル = 0;
+          木材の数 = 0;
         }
           
       }, 100)
     </script>
   </body>
 </html>
+  
